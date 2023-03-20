@@ -1,3 +1,27 @@
+/*
+ This is a simple script to run tests from the command line
+ Create a new file called .test-api-settings.js in the same directory as this file and have it export a FramevrAutomateApi object
+
+ Example
+ -------
+ const FramevrAutomateApi = require('./src');
+ const api = new FramevrAutomateApi('YOUR-API-KEY-HERE', 'your-testing-room');
+ api.setLogger(console.log);
+ module.exports = api;
+ -------
+
+ Then run the following command from the command line:
+ node test.js <test-name> <test-arguments>
+
+ Examples
+ --------
+
+ node test.js getMembers
+ node test.js addMembers "[\"test@test.test\"]"
+ node test.js addMembers "[\"test@test.test\"]"
+ node test.js createTextLabel "{\"assetName\": \"test\"}" "{\"value\": \"This is a new one\"}"
+*/
+
 const api = require('./.test-api-settings.js');
 const test = process.argv[2];
 
@@ -60,9 +84,9 @@ const run = async() => {
         result = await api.getAssetInfo(assetType, assetId);
     } else if(test === 'getFrameSettings') {
         result = await api.getFrameSettings();
-    } else if(test === 'getImageInfo') {
+    } else if(test === 'getImage') {
         const assetId = process.argv[3];
-        result = await api.getImageInfo(assetId);
+        result = await api.getImage(assetId);
     } else if(test === 'getLibraryAssets') {
         const assetType = process.argv[3];
         const filterType = process.argv[4];
@@ -70,15 +94,15 @@ const run = async() => {
         result = await api.getLibraryAssets(assetType, filterType, count);
     } else if(test === 'getMembers') {
         result = await api.getMembers();
-    } else if(test === 'getModelInfo') {
+    } else if(test === 'getModel') {
         const assetId = process.argv[3];
-        result = await api.getModelInfo(assetId);
-    } else if(test === 'getTextAreaInfo') {
+        result = await api.getModel(assetId);
+    } else if(test === 'getTextArea') {
         const assetId = process.argv[3];
-        result = await api.getTextAreaInfo(assetId);
-    } else if(test === 'getTextLabelInfo') {
+        result = await api.getTextArea(assetId);
+    } else if(test === 'getTextLabel') {
         const assetId = process.argv[3];
-        result = await api.getTextLabelInfo(assetId);
+        result = await api.getTextLabel(assetId);
     } else {
         console.log('No or unknown test specified');
         return;

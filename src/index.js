@@ -2,17 +2,17 @@ const {FrameVrAssetType} = require("./models");
 
 class FramevrAutomateApi {
     /**
-     * @type {string} #apiKey
+     * @type {string}
      */
     #apiKey = '';
 
     /**
-     * @type {string} #baseUrl
+     * @type {string}
      */
     #baseUrl = 'https://api.framevr.io:8443/automate/v1';
 
     /**
-     * @type {(string) => void} #logger
+     * @type {function(string): void}
      */
     #logger = (message) => {};
 
@@ -222,7 +222,7 @@ class FramevrAutomateApi {
      * @param {string} assetId
      * @returns {Promise<ImageInfo>}
      */
-    async getImageInfo(assetId) {
+    async getImage(assetId) {
         return this.getAssetInfo(FrameVrAssetType.images, assetId);
     }
 
@@ -230,21 +230,21 @@ class FramevrAutomateApi {
      * @param {string} assetId
      * @returns {Promise<ModelInfo>}
      */
-    async getModelInfo(assetId) {
+    async getModel(assetId) {
         return this.getAssetInfo(FrameVrAssetType.models, assetId);
     }
 
     /**
      * @param {string} assetId
      */
-    async getTextAreaInfo(assetId) {
+    async getTextArea(assetId) {
         return this.getAssetInfo(FrameVrAssetType.textAreas, assetId);
     }
 
     /**
      * @param {string} assetId
      */
-    async getTextLabelInfo(assetId) {
+    async getTextLabel(assetId) {
         return this.getAssetInfo(FrameVrAssetType.texts, assetId);
     }
 
