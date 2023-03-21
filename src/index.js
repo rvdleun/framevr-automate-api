@@ -9,7 +9,7 @@ class FramevrAutomateApi {
     /**
      * @type {string}
      */
-    #baseUrl = 'https://api.framevr.io:8443/automate/v1';
+    #baseUrl = 'https://api.framevr.io/automate/v1';
 
     /**
      * @type {function(string): void}
